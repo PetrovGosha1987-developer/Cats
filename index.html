@@ -1,23 +1,144 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <title>Коты</title>
-  <link rel="stylesheet" href="style.css"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="cats.js"></script>
-</head>
-<body>
-  <header class="header-container">
-      <img class="header-img" src="img/cat-fill.svg">
-      <span class="header-text">Бабуленькины котики</span>
-  </header>
-  <main class="container"></main>
-  <footer>©2022 All rights reserved</footer>
-  <div class="info-block">
-      <div class="info-wrapper">
 
-      </div>
-  </div>
-  <script src="script.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабуленькины котики</title>
+    <link type="image/png" sizes="16x16" rel="icon" href="img/favicon-16x16.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                    <img class="header__logo" src="img/cat-fill.svg" alt="Бабуленькины котики">
+                <span class="header__text">Бабуленькины котики</span>
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+
+    <div class="control">
+        <div class="container">
+            <div class="control__item">
+                <button class="button button-add-cat" type="button">Добавить кота</button>
+                <button class="button button-overwriting-local-storage" type="button">Обновить страницу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+        <div class="container">
+            <div class="main__card">
+
+            </div>
+        </div>
+    </main>
+    <!-- /main -->
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="container">
+            <p>©2022 All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- /footer -->
+
+    <!-- POPUP CATS -->
+    <div class="wrapper__popup">
+
+        <div class="popup popup_type_cats-info">
+            <div class="popup__container">
+                <div class="popup__content">
+                    <div class="popup__picture">
+                        <img class="content popup__cat-img" name="img_link" alt="котик">
+                    </div>
+                    <div class="popup__title">
+                        <h2 class="content popup__cat-name" name="name"></h2>
+                        <h3 class="content popup__cat-age" name="age"></h3>
+                        <p class="content popup__cat-rating" name="rating"></p>
+                        <p class="content popup__cat-description" name="description"></p>
+                        <p class="content popup__cat-id" name="id"></p>
+                    </div>
+                </div>
+                <div class="popup__button">
+                    <button class="button popup__change-form__send-button" type="button">Изменить</button>
+                    <button class="button popup__delete-form__send-button" type="submit">Удалить</button>
+                </div>
+                <div class="popup__img-close"></div>
+            </div>
+        </div>
+
+        <div class="popup popup_add_cat-info">
+            <div class="popup__container">
+                <form class="popup__add-form">
+                    <input id="add-id" class="popup__add-form__input" type="text" name="id"
+                        placeholder="Введите id котика">
+                    <input id="add-name" class="popup__add-form__input" type="text" name="name"
+                        placeholder="Введите имя котика">
+                    <input id="add-age" class="popup__add-form__input" type="text" name="age"
+                        placeholder="Введите возраст котика">
+                    <input id="add-rate" class="popup__add-form__input" type="number" name="rate"
+                        placeholder="Введите рейтинг котика" min="0" max="10">
+                    <input id="add-img_link" class="popup__add-form__input" type="text" name="img_link"
+                        placeholder="Введите URL картинки котика">
+                    <input id="add-description" class="popup__add-form__input" type="text" name="description"
+                        placeholder="Введите информацию о котике">
+                    <div class="popup__add-form__button">
+                        <button class="button popup__add-form__send-button" type="submit">Отправить</button>
+                    </div>
+                </form>
+                <div class="popup__img-close"></div>
+            </div>
+        </div>
+
+        <div class="popup popup_edit_cat-info">
+            <div class="popup__container">
+                <form class="popup__edit-form">
+                    <input id="edit-id" class="popup__edit-form__input" type="text" name="id" disabled="disabled">
+                    <input id="edit-name" class="popup__edit-form__input" type="text" name="name"
+                        placeholder="Введите новое имя котика">
+                    <input id="edit-age" class="popup__edit-form__input" type="text" name="age"
+                        placeholder="Введите новый возраст котика">
+                    <input id="edit-rate" class="popup__edit-form__input" type="number" name="rate"
+                        placeholder="Введите новый рейтинг котика" min="0" max="10">
+                    <input id="edit-img_link" class="popup__edit-form__input" type="text" name="img_link"
+                        placeholder="Введите новый URL картинки котика">
+                    <input id="edit-description" class="popup__edit-form__input" type="text" name="description"
+                        placeholder="Введите новую информацию о котике">
+                    <div class="popup__edit-form__button">
+                        <button class="button popup__edit-form__send-button" type="submit">Обновить</button>
+                    </div>
+                </form>
+                <div class="popup__img-close"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /popup cats -->
+
+    <!-- TEMPLATE -->
+    <template id="card-cat-template">
+        <div class="card__item">
+            <div class="card__img"></div>
+            <div class="card__title">
+                <h3></h3>
+                <p class="cat-rating"></p>
+                <p class="cat-id"></p>
+            </div>
+        </div>
+    </template>
+
+    <script src="Api.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабуленькины котики</title>
+    <link rel="stylesheet" href="auth.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                        <img class="header__logo" src="img/cat-fill.svg" alt="Бабуленькины котики">
+                    <span class="header__text">Бабуленькины котики</span>
+                </div>
+            </div>
+        </header>
+        <!-- /header -->
+
+        <!-- AUTH -->
+        <main class="main">
+            <div class="container">
+                <section class="todos">
+                    <form class="auth-form" name="auth-form">
+                        <input class="auth-form__input" type="text" name="todo" placeholder="Введите ваше имя">
+                        <button class="auth-form__submit-button" type="submit">Авторизоваться</button>
+                    </form>
+                </section>
+            </div>
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <p>©2022 All rights reserved</p>
+            </div>
+        </footer>
+        <!-- /footer -->
+    </div>
+
+
+    <script src="auth.js"></script>
+</body>
+</html>
